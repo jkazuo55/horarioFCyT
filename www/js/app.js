@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic','starter.controllers'])
+angular.module('starter', ['ionic','starter.controllers','ui.router'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -30,9 +30,40 @@ angular.module('starter', ['ionic','starter.controllers'])
         templateUrl:'templates/sidemenu.html',
         controller:'AppCtrl'
       })
-      .state('app.about',{
-        url:'/about'
-      });
-  $urlRouterProvider.otherwise('/app/about')
+
+      .state('app.home',{
+                 url: '/home',
+                 views:{
+                    'homeContent':{
+                        templateUrl:'templates/home.html'
+                    }
+                 }
+            })
+      .state('app.eventos',{
+                  url: '/eventos',
+                  views:{
+                    'app-eventos':{
+                        templateUrl:'templates/eventos.html'
+                    }
+                  }
+            })
+      .state('app.horario',{
+                  url: '/horario',
+                  views:{
+                    'app-horario':{
+                        templateUrl:'templates/horario.html'
+                    }
+                  }
+            })
+      .state('app.apuntes',{
+                  url: '/apuntes',
+                  views:{
+                    'app-apuntes':{
+                        templateUrl:'templates/apuntes.html'
+                    }
+                  }
+            });
+
+  $urlRouterProvider.otherwise('/app/home')
   
 })
